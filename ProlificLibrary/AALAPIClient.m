@@ -20,15 +20,12 @@
     NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
     NSString *getAllBooksURL = [NSString stringWithFormat:@"%@books", kPROLIFIC_API_PATH];
     
-    NSLog(@"%@", getAllBooksURL);
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:getAllBooksURL
       parameters:nil
          success:^(NSURLSessionDataTask *task, id responseObject)
      {
          [backgroundQueue addOperationWithBlock:^{
-             NSLog(@"%@", responseObject);
              completionBlock(responseObject);
          }];
          
@@ -45,8 +42,33 @@
     return nil;
 }
 
-- (void) addLibraryBook
++ (void) addLibraryBookWithTitle:(NSString *)title
+                          author:(NSString *)author
+                      categories:(NSString *)categories
+                       publisher:(NSString *)publisher
+                      completion:(void (^)(BOOL))completionBlock
 {
+    
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+    NSString *addBookURL = [NSString stringWithFormat:@"%@books", kPROLIFIC_API_PATH];
+    
+    NSDictionary *params = @{@"title":title, @"author":author, @"categories":categories, @"publisher":publisher};
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:addBookURL
+      parameters:params
+         success:^(NSURLSessionDataTask *task, id responseObject)
+     {
+         [backgroundQueue addOperationWithBlock:^{
+             NSLog(@"%@", responseObject);
+             completionBlock(responseObject);
+         }];
+         
+         
+     } failure:^(NSURLSessionDataTask *task, NSError *error)
+     {
+         NSLog(@"Fail: %@",error.localizedDescription);
+     }];
     
 }
 

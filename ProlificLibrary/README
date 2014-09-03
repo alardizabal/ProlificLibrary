@@ -10,3 +10,4 @@ self.libraryOfBooks in the data store is an array of AALBooks
 Additional Features:
 
 Pull down to update table view
+Sort by Title/Author Ascending/Descending

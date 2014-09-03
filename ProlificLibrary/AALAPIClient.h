@@ -15,7 +15,12 @@
 + (void) getAllBooksWithCompletion:(void (^)(NSArray *allBooks))completionBlock;
 - (AALBook *) getSingleBook;
 
-- (void) addLibraryBook;
++ (void) addLibraryBookWithTitle:(NSString *)title
+                          author:(NSString *)author
+                      categories:(NSString *)categories
+                       publisher:(NSString *)publisher
+                      completion:(void (^)(BOOL success))completionBlock;
+
 - (void) updateLibraryBook;
 
 - (void) deleteSingleBook;

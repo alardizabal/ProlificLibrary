@@ -7,6 +7,7 @@
 //
 
 #import "AALMainBooksTableViewController.h"
+#import "AALBookDetailViewController.h"
 #import "AALLibraryDataStore.h"
 #import "AALAPIClient.h"
 #import "AALBook.h"
@@ -14,6 +15,8 @@
 @interface AALMainBooksTableViewController ()
 
 @property (nonatomic) AALLibraryDataStore *store;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addBookButton;
 
 @end
 
@@ -40,6 +43,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     self.store = [AALLibraryDataStore sharedDataStore];
     [self.store getAllBooksWithCompletion:^(BOOL success) {
@@ -76,25 +80,27 @@
     
     AALBook *tempBook = self.store.libraryOfBooks[indexPath.row];
     
-    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    //cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:12];
     cell.textLabel.text = tempBook.title;
+    
+    cell.detailTextLabel.font = [UIFont italicSystemFontOfSize:10];
+    cell.detailTextLabel.text = tempBook.author;
     
     return cell;
 }
 
 #pragma mark - Navigation
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     
-    //    FISCitizensTableViewController *destVC = segue.destinationViewController;
-    //    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-    //
-    //    City *cityToPass = self.resultController.fetchedObjects[path.row];
-    //
-    //    NSSortDescriptor *citizenSorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    //    NSArray *tempArray = [[NSArray arrayWithArray:[cityToPass.citizens allObjects]]sortedArrayUsingDescriptors:@[citizenSorter]];
-    //
-    //    destVC.citizens = tempArray;
+    if (sender != self.addBookButton) {
+        AALBookDetailViewController *destVC = segue.destinationViewController;
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        destVC.specificBookDetails = self.store.libraryOfBooks[path.row];
+    }
     
 }
 

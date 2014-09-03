@@ -178,12 +178,12 @@
 		A25E3A1119B65CBB000B7BE1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A25E3A1219B65CF2000B7BE1 /* AALAddBookViewController.h */,
-				A25E3A1319B65CF2000B7BE1 /* AALAddBookViewController.m */,
-				A25E3A0E19B65CB2000B7BE1 /* AALBookDetailViewController.h */,
-				A25E3A0F19B65CB2000B7BE1 /* AALBookDetailViewController.m */,
 				A25E3A0B19B65C82000B7BE1 /* AALMainBooksTableViewController.h */,
 				A25E3A0C19B65C82000B7BE1 /* AALMainBooksTableViewController.m */,
+				A25E3A0E19B65CB2000B7BE1 /* AALBookDetailViewController.h */,
+				A25E3A0F19B65CB2000B7BE1 /* AALBookDetailViewController.m */,
+				A25E3A1219B65CF2000B7BE1 /* AALAddBookViewController.h */,
+				A25E3A1319B65CF2000B7BE1 /* AALAddBookViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
