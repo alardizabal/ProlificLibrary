@@ -1,5 +1,5 @@
 //
-//  AALViewController.h
+//  AALAddBookViewController.h
 //  ProlificLibrary
 //
 //  Created by Albert Lardizabal on 9/2/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AALViewController : UIViewController
+@interface AALAddBookViewController : UIViewController
 
 @end
