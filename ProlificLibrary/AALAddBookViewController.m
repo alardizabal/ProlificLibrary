@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *categoriesTextField;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
+@property (nonatomic) UIAlertView *doneButtonAlertView;
+@property (nonatomic) UIAlertView *submitButtonAlertView;
+
 @end
 
 @implementation AALAddBookViewController
@@ -49,7 +52,17 @@
 
 - (IBAction)doneButtonPressed:(id)sender
 {
-    
+    if (self.bookTitleTextField.text || self.authorTextField.text || self.publisherTextField.text || self.categoriesTextField.text) {
+        
+        self.doneButtonAlertView = [[UIAlertView alloc] initWithTitle:@"Warning!"
+                                                          message:@"You have unsaved changes.\n  Click OK to discard edits."
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:@"OK", nil];
+        self.doneButtonAlertView.delegate = self;
+        self.doneButtonAlertView.tag = 0;
+        [self.doneButtonAlertView show];
+    }
 }
 
 - (IBAction)submitButtonPressed:(id)sender
@@ -57,12 +70,14 @@
     
     if ([self.bookTitleTextField.text isEqualToString:@""] || [self.authorTextField.text isEqualToString:@""])
     {
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Missing Required Info"
-                                                          message:@"Book title and author fields must be populated!"
+        self.submitButtonAlertView = [[UIAlertView alloc] initWithTitle:@"Missing Required Info"
+                                                          message:@"Title and author fields \n must be populated!"
                                                          delegate:self
-                                                cancelButtonTitle:@"Cancel"
-                                                otherButtonTitles:@"OK", nil];
-        [message show];
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        self.submitButtonAlertView.delegate = self;
+        self.submitButtonAlertView.tag = 1;
+        [self.submitButtonAlertView show];
         
     } else {
         
@@ -73,6 +88,16 @@
                                  completion:^(BOOL success) {
                                  }];
     }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (alertView.tag == 0 && buttonIndex == 1)
+    {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
+    
 }
 
 /*
