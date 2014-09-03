@@ -35,20 +35,34 @@
 - (void) getAllBooksWithCompletion:(void (^)(BOOL success))completionBlock
 {
     [AALAPIClient getAllBooksWithCompletion:^(NSArray *allBooks) {
-
+        
         for (NSDictionary *book in allBooks) {
             
             AALBook *tempBook = [[AALBook alloc]init];
-            tempBook.author = book[@"author"];
+            
+            
+            if (book[@"author"] == [NSNull null]) {
+                tempBook.author = @"Author N/A";
+            } else {
+                tempBook.author = book[@"author"];
+            }
             
             NSString *categoryString = book[@"categories"];
-            tempBook.categories = [categoryString componentsSeparatedByString:@","];
+            if (categoryString != (id)[NSNull null]) {
+                tempBook.categories = [categoryString componentsSeparatedByString:@","];
+            }
             
             tempBook.bookID = book[@"id"];
             tempBook.lastCheckedOut = book[@"lastCheckedOut"];
             tempBook.lastCheckedOutBy = book[@"lastCheckedOutBy"];
             tempBook.publisher = book[@"publisher"];
-            tempBook.title = book[@"title"];
+            
+            if (book[@"title"] == [NSNull null]) {
+                tempBook.title = @"Title N/A";
+            } else {
+                tempBook.title = book[@"title"];
+            }
+            
             tempBook.url = book[@"url"];
             
             [self.libraryOfBooks addObject:tempBook];
@@ -58,6 +72,23 @@
         
     }];
     
+}
+
+- (void) addLibraryBookWithTitle:(NSString *)title
+                          author:(NSString *)author
+                      categories:(NSString *)categories
+                       publisher:(NSString *)publisher
+                      completion:(void (^)(BOOL))completionBlock
+{
+    [AALAPIClient addLibraryBookWithTitle:title
+                                   author:author
+                               categories:categories
+                                publisher:publisher
+                               completion:^(BOOL success) {
+                                   
+                                   completionBlock(YES);
+                                   
+                               }];
 }
 
 @end

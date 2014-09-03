@@ -7,8 +7,18 @@
 //
 
 #import "AALAddBookViewController.h"
+#import "AALLibraryDataStore.h"
 
 @interface AALAddBookViewController ()
+
+@property (nonatomic) AALLibraryDataStore *store;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UITextField *bookTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *authorTextField;
+@property (weak, nonatomic) IBOutlet UITextField *publisherTextField;
+@property (weak, nonatomic) IBOutlet UITextField *categoriesTextField;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 @end
 
@@ -26,7 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.store = [AALLibraryDataStore sharedDataStore];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +47,43 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)doneButtonPressed:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
+- (IBAction)submitButtonPressed:(id)sender
+{
+    
+    if ([self.bookTitleTextField.text isEqualToString:@""] || [self.authorTextField.text isEqualToString:@""])
+    {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Missing Required Info"
+                                                          message:@"Book title and author fields must be populated!"
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:@"OK", nil];
+        [message show];
+        
+    } else {
+        
+        [self.store addLibraryBookWithTitle:self.bookTitleTextField.text
+                                     author:self.authorTextField.text
+                                 categories:self.categoriesTextField.text
+                                  publisher:self.publisherTextField.text
+                                 completion:^(BOOL success) {
+                                 }];
+    }
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

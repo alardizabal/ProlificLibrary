@@ -149,7 +149,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Add Book" id="MmZ-nl-rmC">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="zPQ-UT-62w"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="zPQ-UT-62w">
+                                            <connections>
+                                                <action selector="doneButtonPressed:" destination="EtT-6K-N9E" id="vEz-qz-ocM"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -183,10 +187,21 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="EtT-6K-N9E" eventType="touchUpInside" id="8PY-eK-lr0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="authorTextField" destination="1gc-ob-a3k" id="698-xE-f2w"/>
+                        <outlet property="bookTitleTextField" destination="F7h-mD-bwv" id="zGt-Zi-k16"/>
+                        <outlet property="categoriesTextField" destination="hbe-en-6sN" id="OYF-1J-9bB"/>
+                        <outlet property="doneButton" destination="zPQ-UT-62w" id="zAV-cb-9cp"/>
+                        <outlet property="publisherTextField" destination="66t-H4-kuA" id="rK6-IX-eVe"/>
+                        <outlet property="submitButton" destination="Oka-UG-Pkm" id="pKY-8w-8qn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZN-ur-xrx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

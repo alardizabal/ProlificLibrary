@@ -50,17 +50,18 @@
 {
     
     NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
-    NSString *addBookURL = [NSString stringWithFormat:@"%@books", kPROLIFIC_API_PATH];
-    
+    NSString *addBookURL = [NSString stringWithFormat:@"%@books/", kPROLIFIC_API_PATH];
+   
     NSDictionary *params = @{@"title":title, @"author":author, @"categories":categories, @"publisher":publisher};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
     [manager POST:addBookURL
       parameters:params
          success:^(NSURLSessionDataTask *task, id responseObject)
      {
          [backgroundQueue addOperationWithBlock:^{
-             NSLog(@"%@", responseObject);
+             NSLog(@"Post %@", responseObject);
              completionBlock(responseObject);
          }];
          

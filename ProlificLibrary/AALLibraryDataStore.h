@@ -16,4 +16,10 @@
 
 - (void) getAllBooksWithCompletion:(void (^)(BOOL success))completionBlock;
 
+- (void) addLibraryBookWithTitle:(NSString *)title
+                          author:(NSString *)author
+                      categories:(NSString *)categories
+                       publisher:(NSString *)publisher
+                      completion:(void (^)(BOOL success))completionBlock;
+
 @end
