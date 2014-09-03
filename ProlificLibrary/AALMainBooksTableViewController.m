@@ -17,6 +17,7 @@
 @property (nonatomic) AALLibraryDataStore *store;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addBookButton;
+@property (nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -52,6 +53,10 @@
         }];
     }];
     
+    // Pull down to refresh table view
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,6 +109,17 @@
     
 }
 
+#pragma mark - Pull down to refresh table
+
+- (void) refreshTable
+{
+    [self.store getAllBooksWithCompletion:^(BOOL success) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.refreshControl endRefreshing];
+            [self.tableView reloadData];
+        }];
+    }];
+}
 
 /*
  // Override to support conditional editing of the table view.
