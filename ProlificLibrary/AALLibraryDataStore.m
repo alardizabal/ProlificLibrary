@@ -53,7 +53,7 @@
             }
             
             tempBook.bookID = book[@"id"];
-            tempBook.lastCheckedOut = book[@"lastCheckedOut"];
+            tempBook.lastCheckedOutDate = book[@"lastCheckedOut"];
             tempBook.lastCheckedOutBy = book[@"lastCheckedOutBy"];
             tempBook.publisher = book[@"publisher"];
             

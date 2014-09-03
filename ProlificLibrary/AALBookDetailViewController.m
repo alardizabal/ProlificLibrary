@@ -10,6 +10,12 @@
 
 @interface AALBookDetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *bookTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *publisherLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastCheckedOutByLabel;
+
 @end
 
 @implementation AALBookDetailViewController
@@ -26,6 +32,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.specificBookDetails.title == (id)[NSNull null]) {
+        self.specificBookDetails.title = @"Title N/A";
+        
+    } else if (self.specificBookDetails.author == (id)[NSNull null]) {
+        self.specificBookDetails.author = @"Author N/A";
+        
+    } else if (self.specificBookDetails.publisher == (id)[NSNull null]) {
+        self.specificBookDetails.publisher = @"Publisher N/A";
+        
+    } else if (self.specificBookDetails.categories == (id)[NSNull null]) {
+        self.specificBookDetails.categories = @[@"N/A"];
+        
+    } else if (self.specificBookDetails.lastCheckedOutBy == (id)[NSNull null]) {
+        self.specificBookDetails.lastCheckedOutBy = @"N/A";
+        
+    }
+    
+    self.bookTitleLabel.text = self.specificBookDetails.title;
+    self.authorLabel.text = self.specificBookDetails.author;
+    self.publisherLabel.text = self.specificBookDetails.publisher;
+    self.tagsLabel.text = [self.specificBookDetails.categories componentsJoinedByString:@","];
+    self.lastCheckedOutByLabel.text = self.specificBookDetails.lastCheckedOutBy;
     
 }
 

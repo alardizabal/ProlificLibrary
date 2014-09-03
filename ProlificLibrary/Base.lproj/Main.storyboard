@@ -47,14 +47,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Books" id="KxU-hh-Fll">
-                        <barButtonItem key="leftBarButtonItem" image="book" id="MiL-2a-bpM">
+                        <barButtonItem key="leftBarButtonItem" image="skull_and_crossbones" id="MiL-2a-bpM"/>
+                        <barButtonItem key="rightBarButtonItem" image="book" id="Aho-v4-7Yv">
                             <connections>
-                                <segue destination="EtT-6K-N9E" kind="modal" identifier="segueToAddBookVC" id="2yB-qy-FHZ"/>
+                                <segue destination="EtT-6K-N9E" kind="modal" id="dmO-yh-BV3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addBookButton" destination="MiL-2a-bpM" id="k80-6v-R8k"/>
+                        <outlet property="addBookButton" destination="Aho-v4-7Yv" id="XUh-ZV-HBs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwR-cU-Tfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,6 +128,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Book Detail" id="oZf-ey-4Nw"/>
+                    <connections>
+                        <outlet property="authorLabel" destination="MDu-gg-IEf" id="TIx-UI-zO4"/>
+                        <outlet property="bookTitleLabel" destination="C8F-3G-0O1" id="wtv-SJ-xR6"/>
+                        <outlet property="lastCheckedOutByLabel" destination="dH4-Aj-ztD" id="LJF-30-fcQ"/>
+                        <outlet property="publisherLabel" destination="Wym-HF-qVY" id="PGp-zP-cfs"/>
+                        <outlet property="tagsLabel" destination="8R8-Vd-a7Z" id="sbS-KT-C8o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,6 +236,7 @@
     </scenes>
     <resources>
         <image name="book" width="20" height="28"/>
+        <image name="skull_and_crossbones" width="25" height="28"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

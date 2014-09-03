@@ -80,11 +80,11 @@
     
     AALBook *tempBook = self.store.libraryOfBooks[indexPath.row];
     
-    //cell.textLabel.adjustsFontSizeToFitWidth = YES;
-    
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:12];
     cell.textLabel.text = tempBook.title;
     
+    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     cell.detailTextLabel.font = [UIFont italicSystemFontOfSize:10];
     cell.detailTextLabel.text = tempBook.author;
     
