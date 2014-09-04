@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *publisherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastCheckedOutByLabel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 
 @end
 
@@ -70,6 +69,11 @@
     
     [self presentViewController:activityVC animated:YES completion:^{
     }];
+}
+
+- (IBAction)editButtonPressed:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
