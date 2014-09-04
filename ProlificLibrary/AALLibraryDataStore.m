@@ -36,6 +36,8 @@
 {
     [AALAPIClient getAllBooksWithCompletion:^(NSArray *allBooks) {
         
+        self.libraryOfBooks = [[NSMutableArray alloc]init];
+        
         for (NSDictionary *book in allBooks) {
             
             AALBook *tempBook = [[AALBook alloc]init];
@@ -67,6 +69,9 @@
             
             [self.libraryOfBooks addObject:tempBook];
         }
+
+        NSSortDescriptor *sortByTitle = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+        [self.libraryOfBooks sortUsingDescriptors:@[sortByTitle]];
         
         completionBlock(YES);
         
@@ -89,6 +94,14 @@
                                    completionBlock(YES);
                                    
                                }];
+}
+
+- (void) deleteSingleBookWithID:(id)bookID
+                     completion:(void (^)(BOOL))completionBlock
+{
+    [AALAPIClient deleteSingleBookWithID:bookID completion:^(BOOL success) {
+        completionBlock(YES);
+    }];
 }
 
 @end

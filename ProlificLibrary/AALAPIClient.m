@@ -78,8 +78,27 @@
     
 }
 
-- (void) deleteSingleBook
++ (void) deleteSingleBookWithID:(id)bookID
+                     completion:(void (^)(BOOL))completionBlock
 {
+
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+    NSString *deleteBookURL = [NSString stringWithFormat:@"%@books/%@", kPROLIFIC_API_PATH, bookID];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager DELETE:deleteBookURL
+      parameters:nil
+         success:^(NSURLSessionDataTask *task, id responseObject)
+     {
+         [backgroundQueue addOperationWithBlock:^{
+             completionBlock(responseObject);
+         }];
+         
+         
+     } failure:^(NSURLSessionDataTask *task, NSError *error)
+     {
+         NSLog(@"Fail: %@",error.localizedDescription);
+     }];
     
 }
 

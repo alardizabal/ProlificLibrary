@@ -22,4 +22,7 @@
                        publisher:(NSString *)publisher
                       completion:(void (^)(BOOL success))completionBlock;
 
+- (void) deleteSingleBookWithID:(id)bookID
+                     completion:(void (^)(BOOL success))completionBlock;
+
 @end

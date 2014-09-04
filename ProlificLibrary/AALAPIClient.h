@@ -23,7 +23,9 @@
 
 - (void) updateLibraryBook;
 
-- (void) deleteSingleBook;
++ (void) deleteSingleBookWithID:(id)bookID
+                     completion:(void (^)(BOOL success))completionBlock;
+
 - (void) deleteAllBooks;
 
 @end
