@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *publisherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastCheckedOutByLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 
 @end
 
@@ -47,15 +48,28 @@
         
     } else if (self.specificBookDetails.lastCheckedOutBy == (id)[NSNull null]) {
         self.specificBookDetails.lastCheckedOutBy = @"N/A";
-        
+    
+    } else if (self.specificBookDetails.lastCheckedOutDate == (id)[NSNull null]) {
+        self.specificBookDetails.lastCheckedOutDate = @"N/A";
     }
     
-    self.bookTitleLabel.text = self.specificBookDetails.title;
-    self.authorLabel.text = self.specificBookDetails.author;
-    self.publisherLabel.text = self.specificBookDetails.publisher;
-    self.tagsLabel.text = [self.specificBookDetails.categories componentsJoinedByString:@","];
-    self.lastCheckedOutByLabel.text = self.specificBookDetails.lastCheckedOutBy;
+    self.bookTitleLabel.text = [NSString stringWithFormat:@"Title: %@", self.specificBookDetails.title];
+    self.authorLabel.text = [NSString stringWithFormat:@"Author: %@", self.specificBookDetails.author];
+    self.publisherLabel.text = [NSString stringWithFormat:@"Publisher: %@", self.specificBookDetails.publisher];
+    self.tagsLabel.text = [NSString stringWithFormat:@"Tags: %@", [self.specificBookDetails.categories componentsJoinedByString:@","]];
+    self.lastCheckedOutByLabel.text = [NSString stringWithFormat:@"%@ at %@", self.specificBookDetails.lastCheckedOutBy, self.specificBookDetails.lastCheckedOutDate];
     
+}
+
+- (IBAction)shareButtonPressed:(id)sender
+{
+    
+    NSString *shareText = [NSString stringWithFormat:@"Hey! Check out this book:\n\n%@\n%@\n%@\n%@\n%@", self.bookTitleLabel.text, self.authorLabel.text, self.publisherLabel.text, self.tagsLabel.text, [NSString stringWithFormat:@"Last checked out by: %@", self.lastCheckedOutByLabel.text]];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[shareText] applicationActivities:nil];
+    
+    [self presentViewController:activityVC animated:YES completion:^{
+    }];
 }
 
 - (void)didReceiveMemoryWarning

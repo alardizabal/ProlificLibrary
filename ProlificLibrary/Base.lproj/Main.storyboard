@@ -165,13 +165,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Book Detail" id="oZf-ey-4Nw">
-                        <barButtonItem key="rightBarButtonItem" image="share" id="r7k-po-DvO"/>
+                        <barButtonItem key="rightBarButtonItem" image="share" id="r7k-po-DvO">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="vXZ-lx-hvc" id="fuB-Tv-urY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="MDu-gg-IEf" id="TIx-UI-zO4"/>
                         <outlet property="bookTitleLabel" destination="C8F-3G-0O1" id="wtv-SJ-xR6"/>
                         <outlet property="lastCheckedOutByLabel" destination="dH4-Aj-ztD" id="LJF-30-fcQ"/>
                         <outlet property="publisherLabel" destination="Wym-HF-qVY" id="PGp-zP-cfs"/>
+                        <outlet property="shareButton" destination="r7k-po-DvO" id="0RD-Bs-kkj"/>
                         <outlet property="tagsLabel" destination="8R8-Vd-a7Z" id="sbS-KT-C8o"/>
                     </connections>
                 </viewController>
