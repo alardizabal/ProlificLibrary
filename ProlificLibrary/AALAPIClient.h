@@ -13,7 +13,6 @@
 @interface AALAPIClient : NSObject
 
 + (void) getAllBooksWithCompletion:(void (^)(NSArray *allBooks))completionBlock;
-- (AALBook *) getSingleBook;
 
 + (void) addLibraryBookWithTitle:(NSString *)title
                           author:(NSString *)author
@@ -21,7 +20,18 @@
                        publisher:(NSString *)publisher
                       completion:(void (^)(BOOL success))completionBlock;
 
-- (void) updateLibraryBook;
++ (void) updateLibraryBookWithTitle:(NSString *)title
+                             author:(NSString *)author
+                             bookID:(id)bookID
+                         categories:(NSString *)categories
+                          publisher:(NSString *)publisher
+                   lastCheckedOutBy:(NSString *)lastCheckedOutBy
+                         completion:(void (^)(BOOL))completionBlock;
+
++ (void) checkoutLibraryBookWithName:(NSString *)fullName
+                              bookID:(id)bookID
+                        checkoutDate:(NSDate *)checkoutDate
+                          completion:(void (^)(BOOL success))completionBlock;
 
 + (void) deleteSingleBookWithID:(id)bookID
                      completion:(void (^)(BOOL success))completionBlock;

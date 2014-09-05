@@ -69,7 +69,7 @@
             
             [self.libraryOfBooks addObject:tempBook];
         }
-
+        
         NSSortDescriptor *sortByTitle = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
         [self.libraryOfBooks sortUsingDescriptors:@[sortByTitle]];
         
@@ -94,6 +94,40 @@
                                    completionBlock(YES);
                                    
                                }];
+}
+
+- (void) updateLibraryBookWithTitle:(NSString *)title
+                             author:(NSString *)author
+                             bookID:(id)bookID
+                         categories:(NSString *)categories
+                          publisher:(NSString *)publisher
+                   lastCheckedOutBy:(NSString *)lastCheckedOutBy
+                         completion:(void (^)(BOOL))completionBlock
+{
+    [AALAPIClient updateLibraryBookWithTitle:title
+                                      author:author
+                                      bookID:bookID
+                                  categories:categories
+                                   publisher:publisher
+                            lastCheckedOutBy:lastCheckedOutBy
+                                  completion:^(BOOL success) {
+        completionBlock(YES);
+    }];
+}
+
+- (void) checkoutLibraryBookWithName:(NSString *)fullName
+                              bookID:(id)bookID
+                        checkoutDate:(NSDate *)checkoutDate
+                          completion:(void (^)(BOOL))completionBlock
+{
+    [AALAPIClient checkoutLibraryBookWithName:fullName
+                                       bookID:bookID
+                                 checkoutDate:checkoutDate
+                                   completion:^(BOOL success) {
+                                       
+                                       completionBlock(YES);
+                                       
+                                   }];
 }
 
 - (void) deleteSingleBookWithID:(id)bookID

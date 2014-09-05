@@ -146,7 +146,7 @@
 			children = (
 				A25E3A1B19B65F33000B7BE1 /* Classes */,
 				A25E3A1119B65CBB000B7BE1 /* View Controllers */,
-				A25E3A1C19B65F43000B7BE1 /* Models */,
+				A25E3A1C19B65F43000B7BE1 /* Object Models */,
 				A25E39DA19B6546A000B7BE1 /* Resources */,
 			);
 			path = ProlificLibrary;
@@ -213,13 +213,13 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		A25E3A1C19B65F43000B7BE1 /* Models */ = {
+		A25E3A1C19B65F43000B7BE1 /* Object Models */ = {
 			isa = PBXGroup;
 			children = (
 				A25E3A1819B65EC5000B7BE1 /* AALBook.h */,
 				A25E3A1919B65EC5000B7BE1 /* AALBook.m */,
 			);
-			name = Models;
+			name = "Object Models";
 			sourceTree = "<group>";
 		};
 		A25E3A1D19B66076000B7BE1 /* Other */ = {

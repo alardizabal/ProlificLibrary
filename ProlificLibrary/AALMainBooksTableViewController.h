@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AALMainBooksTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AALMainBooksTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @end

@@ -22,6 +22,19 @@
                        publisher:(NSString *)publisher
                       completion:(void (^)(BOOL success))completionBlock;
 
+- (void) updateLibraryBookWithTitle:(NSString *)title
+                             author:(NSString *)author
+                             bookID:(id)bookID
+                         categories:(NSString *)categories
+                          publisher:(NSString *)publisher
+                   lastCheckedOutBy:(NSString *)lastCheckedOutBy
+                         completion:(void (^)(BOOL success))completionBlock;
+
+- (void) checkoutLibraryBookWithName:(NSString *)fullName
+                              bookID:(id)bookID
+                        checkoutDate:(NSDate *)checkoutDate
+                          completion:(void (^)(BOOL success))completionBlock;
+
 - (void) deleteSingleBookWithID:(id)bookID
                      completion:(void (^)(BOOL success))completionBlock;
 

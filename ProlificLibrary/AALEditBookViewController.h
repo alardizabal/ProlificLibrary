@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AALBook.h"
 
 @interface AALEditBookViewController : UIViewController
+
+@property (nonatomic) AALBook *specificBookDetails;
 
 @end

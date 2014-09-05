@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AALBook.h"
 
 @interface AALCheckoutViewController : UIViewController
+
+@property (nonatomic) AALBook *specificBookDetails;
 
 @end

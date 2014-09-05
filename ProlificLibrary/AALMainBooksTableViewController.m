@@ -60,6 +60,11 @@
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -146,6 +151,27 @@
         }];
         
     }
+}
+
+- (IBAction)clearAllButtonPressed:(id)sender
+{
+    UIAlertView *clearAllAlertview = [[UIAlertView alloc] initWithTitle:@"Warning!"
+                                                                message:@"Click OK to delete all books."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Cancel"
+                                                      otherButtonTitles:@"OK", nil];
+    clearAllAlertview.delegate = self;
+    [clearAllAlertview show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 1)
+    {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
+    
 }
 
 /*

@@ -7,6 +7,8 @@
 //
 
 #import "AALBookDetailViewController.h"
+#import "AALEditBookViewController.h"
+#import "AALCheckoutViewController.h"
 
 @interface AALBookDetailViewController ()
 
@@ -15,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *publisherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastCheckedOutByLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *checkoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 @end
 
@@ -33,6 +38,11 @@
 {
     [super viewDidLoad];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
     if (self.specificBookDetails.title == (id)[NSNull null]) {
         self.specificBookDetails.title = @"Title N/A";
         
@@ -47,15 +57,14 @@
         
     } else if (self.specificBookDetails.lastCheckedOutBy == (id)[NSNull null]) {
         self.specificBookDetails.lastCheckedOutBy = @"N/A";
-    
-    } else if (self.specificBookDetails.lastCheckedOutDate == (id)[NSNull null]) {
-        self.specificBookDetails.lastCheckedOutDate = @"N/A";
+
     }
     
     self.bookTitleLabel.text = [NSString stringWithFormat:@"Title: %@", self.specificBookDetails.title];
     self.authorLabel.text = [NSString stringWithFormat:@"Author: %@", self.specificBookDetails.author];
     self.publisherLabel.text = [NSString stringWithFormat:@"Publisher: %@", self.specificBookDetails.publisher];
     self.tagsLabel.text = [NSString stringWithFormat:@"Tags: %@", [self.specificBookDetails.categories componentsJoinedByString:@","]];
+    self.lastCheckedOutByLabel.adjustsFontSizeToFitWidth = YES;
     self.lastCheckedOutByLabel.text = [NSString stringWithFormat:@"%@ at %@", self.specificBookDetails.lastCheckedOutBy, self.specificBookDetails.lastCheckedOutDate];
     
 }
@@ -82,15 +91,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if (sender == self.checkoutButton) {
+        AALCheckoutViewController *checkoutVC = segue.destinationViewController;
+        checkoutVC.specificBookDetails = self.specificBookDetails;
+    } else if (sender == self.editButton) {
+        AALEditBookViewController *editBookVC = segue.destinationViewController;
+        editBookVC.specificBookDetails = self.specificBookDetails;
+    }
 }
-*/
 
 @end

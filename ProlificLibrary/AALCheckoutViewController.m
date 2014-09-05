@@ -7,8 +7,13 @@
 //
 
 #import "AALCheckoutViewController.h"
+#import "AALBookDetailViewController.h"
+#import "AALLibraryDataStore.h"
 
 @interface AALCheckoutViewController ()
+
+@property (nonatomic) AALLibraryDataStore *store;
+@property (weak, nonatomic) IBOutlet UITextField *enterNameTextField;
 
 @end
 
@@ -26,7 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.store = [AALLibraryDataStore sharedDataStore];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,15 +47,48 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)saveNameForCheckout:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([self.enterNameTextField.text isEqual:@""]) {
+        
+        UIAlertView *nameTextFieldBlankAlertView = [[UIAlertView alloc] initWithTitle:@"Missing Required Info"
+                                                                              message:@"Please Enter Your Name"
+                                                                             delegate:self
+                                                                    cancelButtonTitle:@"OK"
+                                                                    otherButtonTitles:nil];
+        [nameTextFieldBlankAlertView show];
+        
+    } else {
+        
+        NSDate *currentDate = [NSDate date];
+        
+        [self.store checkoutLibraryBookWithName:self.enterNameTextField.text bookID:self.specificBookDetails.bookID checkoutDate:currentDate completion:^(BOOL success) {
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                self.specificBookDetails.lastCheckedOutBy = self.enterNameTextField.text;
+                self.specificBookDetails.lastCheckedOutDate = currentDate;
+                
+                AALBookDetailViewController *bookDetailVC = [[AALBookDetailViewController alloc]init];
+                bookDetailVC.self.specificBookDetails = self.specificBookDetails;
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+            }];
+        }];
+    }
 }
-*/
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
