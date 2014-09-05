@@ -28,7 +28,6 @@
 		A25E3A1419B65CF2000B7BE1 /* AALAddBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E3A1319B65CF2000B7BE1 /* AALAddBookViewController.m */; };
 		A25E3A1719B65DFD000B7BE1 /* AALConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E3A1619B65DFD000B7BE1 /* AALConstants.m */; };
 		A25E3A1A19B65EC5000B7BE1 /* AALBook.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E3A1919B65EC5000B7BE1 /* AALBook.m */; };
-		A25E3A2019B6699C000B7BE1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = A25E3A1F19B6699C000B7BE1 /* README */; };
 		A25E3A2319B66ABE000B7BE1 /* AALLibraryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E3A2219B66ABE000B7BE1 /* AALLibraryDataStore.m */; };
 		A29B0C0E19B8DD2700F354D9 /* AALCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B0C0D19B8DD2700F354D9 /* AALCheckoutViewController.m */; };
 		A29B0C1119B8DD5300F354D9 /* AALEditBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B0C1019B8DD5300F354D9 /* AALEditBookViewController.m */; };
@@ -76,7 +75,6 @@
 		A25E3A1619B65DFD000B7BE1 /* AALConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALConstants.m; sourceTree = "<group>"; };
 		A25E3A1819B65EC5000B7BE1 /* AALBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALBook.h; sourceTree = "<group>"; };
 		A25E3A1919B65EC5000B7BE1 /* AALBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALBook.m; sourceTree = "<group>"; };
-		A25E3A1F19B6699C000B7BE1 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		A25E3A2119B66ABE000B7BE1 /* AALLibraryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALLibraryDataStore.h; sourceTree = "<group>"; };
 		A25E3A2219B66ABE000B7BE1 /* AALLibraryDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALLibraryDataStore.m; sourceTree = "<group>"; };
 		A29B0C0C19B8DD2700F354D9 /* AALCheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALCheckoutViewController.h; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				A25E39E519B6546A000B7BE1 /* Main.storyboard */,
-				A25E3A1F19B6699C000B7BE1 /* README */,
 				A21918DA19B99D4A006DE05E /* README.md */,
 				A25E39EB19B6546A000B7BE1 /* Images.xcassets */,
 				A25E3A1D19B66076000B7BE1 /* Other */,
@@ -315,7 +312,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A25E3A2019B6699C000B7BE1 /* README in Resources */,
 				A25E39EC19B6546A000B7BE1 /* Images.xcassets in Resources */,
 				A21918DB19B99D4A006DE05E /* README.md in Resources */,
 				A25E39DE19B6546A000B7BE1 /* InfoPlist.strings in Resources */,

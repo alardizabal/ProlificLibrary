@@ -38,6 +38,7 @@
     
     self.store = [AALLibraryDataStore sharedDataStore];
     
+    self.enterNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.enterNameTextField.delegate = self;
     
 }
