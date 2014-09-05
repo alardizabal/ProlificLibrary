@@ -67,7 +67,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableView reloadData];
+    [self.store getAllBooksWithCompletion:^(BOOL success) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,8 +182,10 @@
     } else if (buttonIndex == 1)
     {
         [self.store deleteAllBooksWithCompletion:^(BOOL success) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.tableView reloadData];
+            [self.store getAllBooksWithCompletion:^(BOOL success) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [self.tableView reloadData];
+                }];
             }];
         }];
     }

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AALAddBookViewController : UIViewController <UIAlertViewDelegate>
+@interface AALAddBookViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 
 @end

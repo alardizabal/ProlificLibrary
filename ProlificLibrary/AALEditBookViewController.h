@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AALBook.h"
 
-@interface AALEditBookViewController : UIViewController
+@interface AALEditBookViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic) AALBook *specificBookDetails;
 

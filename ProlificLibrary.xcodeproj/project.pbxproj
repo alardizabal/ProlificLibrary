@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F6F5FC5445343B69CAA29B6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D198EEE23AD14EF1BCDD0B48 /* libPods.a */; };
+		A21918DB19B99D4A006DE05E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A21918DA19B99D4A006DE05E /* README.md */; };
 		A25E39D419B6546A000B7BE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25E39D319B6546A000B7BE1 /* Foundation.framework */; };
 		A25E39D619B6546A000B7BE1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25E39D519B6546A000B7BE1 /* CoreGraphics.framework */; };
 		A25E39D819B6546A000B7BE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25E39D719B6546A000B7BE1 /* UIKit.framework */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		4539CDFC1E4A4D38ACF56D1A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A21918DA19B99D4A006DE05E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A25E39D019B6546A000B7BE1 /* ProlificLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProlificLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E39D319B6546A000B7BE1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A25E39D519B6546A000B7BE1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -157,6 +159,7 @@
 			children = (
 				A25E39E519B6546A000B7BE1 /* Main.storyboard */,
 				A25E3A1F19B6699C000B7BE1 /* README */,
+				A21918DA19B99D4A006DE05E /* README.md */,
 				A25E39EB19B6546A000B7BE1 /* Images.xcassets */,
 				A25E3A1D19B66076000B7BE1 /* Other */,
 			);
@@ -314,6 +317,7 @@
 			files = (
 				A25E3A2019B6699C000B7BE1 /* README in Resources */,
 				A25E39EC19B6546A000B7BE1 /* Images.xcassets in Resources */,
+				A21918DB19B99D4A006DE05E /* README.md in Resources */,
 				A25E39DE19B6546A000B7BE1 /* InfoPlist.strings in Resources */,
 				A25E39E719B6546A000B7BE1 /* Main.storyboard in Resources */,
 			);

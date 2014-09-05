@@ -55,6 +55,12 @@
     self.tagsTextField.text = self.specificBookDetails.categories;
     self.lastCheckedOutByTextField.text = self.specificBookDetails.lastCheckedOutBy;
     
+    self.titleTextField.delegate = self;
+    self.authorTextField.delegate = self;
+    self.publisherTextField.delegate = self;
+    self.tagsTextField.delegate = self;
+    self.lastCheckedOutByTextField.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,11 +76,6 @@
     {
         [self setViewMovedUp:YES];
     }
-    else if (self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
-    }
-    
 }
 
 - (void)keyboardWillHide {
@@ -188,6 +189,12 @@
     [self.publisherTextField resignFirstResponder];
     [self.tagsTextField resignFirstResponder];
     [self.lastCheckedOutByTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

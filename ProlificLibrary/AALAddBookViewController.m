@@ -52,6 +52,11 @@
     
     self.store = [AALLibraryDataStore sharedDataStore];
     
+    self.bookTitleTextField.delegate = self;
+    self.authorTextField.delegate = self;
+    self.publisherTextField.delegate = self;
+    self.categoriesTextField.delegate = self;
+    
 }
 
 #pragma mark - Adjust view for keyboard input methods
@@ -62,11 +67,6 @@
     {
         [self setViewMovedUp:YES];
     }
-    else if (self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
-    }
-    
 }
 
 - (void)keyboardWillHide {
@@ -143,7 +143,7 @@
 
 - (IBAction)doneButtonPressed:(id)sender
 {
-    if (self.bookTitleTextField.text || self.authorTextField.text || self.publisherTextField.text || self.categoriesTextField.text) {
+    if (![self.bookTitleTextField.text isEqualToString:@""] || ![self.authorTextField.text isEqualToString:@""] || ![self.publisherTextField.text isEqualToString:@""] || ![self.categoriesTextField.text isEqualToString:@""]) {
         
         self.doneButtonAlertView = [[UIAlertView alloc] initWithTitle:@"Warning!"
                                                               message:@"You have unsaved changes.\n  Click OK to discard edits."
@@ -153,6 +153,12 @@
         self.doneButtonAlertView.delegate = self;
         self.doneButtonAlertView.tag = 0;
         [self.doneButtonAlertView show];
+        
+    } else {
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+        
     }
 }
 
@@ -217,6 +223,12 @@
     [self.authorTextField resignFirstResponder];
     [self.publisherTextField resignFirstResponder];
     [self.categoriesTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

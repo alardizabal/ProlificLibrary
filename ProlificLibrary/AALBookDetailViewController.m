@@ -67,11 +67,16 @@
         
     }
     
+    self.bookTitleLabel.adjustsFontSizeToFitWidth = YES;
+    self.authorLabel.adjustsFontSizeToFitWidth = YES;
+    self.publisherLabel.adjustsFontSizeToFitWidth = YES;
+    self.tagsLabel.adjustsFontSizeToFitWidth = YES;
+    self.lastCheckedOutByLabel.adjustsFontSizeToFitWidth = YES;
+    
     self.bookTitleLabel.text = [NSString stringWithFormat:@"Title: %@", self.specificBookDetails.title];
     self.authorLabel.text = [NSString stringWithFormat:@"Author: %@", self.specificBookDetails.author];
     self.publisherLabel.text = [NSString stringWithFormat:@"Publisher: %@", self.specificBookDetails.publisher];
     self.tagsLabel.text = [NSString stringWithFormat:@"Tags: %@", self.specificBookDetails.categories];
-    self.lastCheckedOutByLabel.adjustsFontSizeToFitWidth = YES;
     self.lastCheckedOutByLabel.text = [NSString stringWithFormat:@"%@ at %@", self.specificBookDetails.lastCheckedOutBy, self.specificBookDetails.lastCheckedOutDate];
     
 }
