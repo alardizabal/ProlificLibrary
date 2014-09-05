@@ -15,6 +15,10 @@
 @property (nonatomic) AALLibraryDataStore *store;
 @property (weak, nonatomic) IBOutlet UITextField *enterNameTextField;
 
+- (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)saveNameForCheckout:(id)sender;
+- (IBAction)hideKeyboard:(id)sender;
+
 @end
 
 @implementation AALCheckoutViewController
@@ -23,7 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -34,12 +38,13 @@
 
     self.store = [AALLibraryDataStore sharedDataStore];
     
+    self.enterNameTextField.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)cancelButtonPressed:(id)sender
@@ -83,6 +88,12 @@
 - (IBAction)hideKeyboard:(id)sender
 {
     [self.enterNameTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

@@ -51,7 +51,7 @@
             
             NSString *categoryString = book[@"categories"];
             if (categoryString != (id)[NSNull null]) {
-                tempBook.categories = [categoryString componentsSeparatedByString:@","];
+                tempBook.categories = categoryString;
             }
             
             tempBook.bookID = book[@"id"];
@@ -111,7 +111,9 @@
                                    publisher:publisher
                             lastCheckedOutBy:lastCheckedOutBy
                                   completion:^(BOOL success) {
+                                      
         completionBlock(YES);
+                                      
     }];
 }
 
@@ -134,7 +136,9 @@
                      completion:(void (^)(BOOL))completionBlock
 {
     [AALAPIClient deleteSingleBookWithID:bookID completion:^(BOOL success) {
+        
         completionBlock(YES);
+        
     }];
 }
 

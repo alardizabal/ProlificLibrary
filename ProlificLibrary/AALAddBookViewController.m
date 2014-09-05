@@ -25,6 +25,14 @@
 @property (nonatomic) UIAlertView *doneButtonAlertView;
 @property (nonatomic) UIAlertView *submitButtonAlertView;
 
+// Methods to animate the view due to keyboard input
+- (void)keyboardWillShow;
+- (void)keyboardWillHide;
+
+- (IBAction)doneButtonPressed:(id)sender;
+- (IBAction)submitButtonPressed:(id)sender;
+- (IBAction)hideKeyboard:(id)sender;
+
 @end
 
 @implementation AALAddBookViewController
@@ -43,11 +51,12 @@
     [super viewDidLoad];
     
     self.store = [AALLibraryDataStore sharedDataStore];
+    
 }
 
 #pragma mark - Adjust view for keyboard input methods
 
--(void)keyboardWillShow {
+- (void)keyboardWillShow {
     
     if (self.view.frame.origin.y >= 0)
     {
@@ -60,7 +69,7 @@
     
 }
 
--(void)keyboardWillHide {
+- (void)keyboardWillHide {
     
     if (self.view.frame.origin.y >= 0)
     {

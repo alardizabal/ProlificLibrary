@@ -9,6 +9,7 @@
 #import "AALBookDetailViewController.h"
 #import "AALEditBookViewController.h"
 #import "AALCheckoutViewController.h"
+#import "AALConstants.h"
 
 @interface AALBookDetailViewController ()
 
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *checkoutButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 
+- (IBAction)shareButtonPressed:(id)sender;
+
 @end
 
 @implementation AALBookDetailViewController
@@ -29,7 +32,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -37,13 +40,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,7 +60,7 @@
         self.specificBookDetails.publisher = @"Publisher N/A";
         
     } else if (self.specificBookDetails.categories == (id)[NSNull null]) {
-        self.specificBookDetails.categories = @[@"N/A"];
+        self.specificBookDetails.categories = @"N/A";
         
     } else if (self.specificBookDetails.lastCheckedOutBy == (id)[NSNull null]) {
         self.specificBookDetails.lastCheckedOutBy = @"N/A";
@@ -69,7 +70,7 @@
     self.bookTitleLabel.text = [NSString stringWithFormat:@"Title: %@", self.specificBookDetails.title];
     self.authorLabel.text = [NSString stringWithFormat:@"Author: %@", self.specificBookDetails.author];
     self.publisherLabel.text = [NSString stringWithFormat:@"Publisher: %@", self.specificBookDetails.publisher];
-    self.tagsLabel.text = [NSString stringWithFormat:@"Tags: %@", [self.specificBookDetails.categories componentsJoinedByString:@","]];
+    self.tagsLabel.text = [NSString stringWithFormat:@"Tags: %@", self.specificBookDetails.categories];
     self.lastCheckedOutByLabel.adjustsFontSizeToFitWidth = YES;
     self.lastCheckedOutByLabel.text = [NSString stringWithFormat:@"%@ at %@", self.specificBookDetails.lastCheckedOutBy, self.specificBookDetails.lastCheckedOutDate];
     

@@ -22,6 +22,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastCheckedOutByTextField;
 
+// Methods to animate the view due to keyboard input
+- (void)keyboardWillShow;
+- (void)keyboardWillHide;
+
+- (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)saveButtonPressed:(id)sender;
+- (IBAction)hideKeyboard:(id)sender;
+
 @end
 
 @implementation AALEditBookViewController
@@ -30,6 +38,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
     }
     return self;
 }
@@ -43,7 +52,7 @@
     self.titleTextField.text = self.specificBookDetails.title;
     self.authorTextField.text = self.specificBookDetails.author;
     self.publisherTextField.text = self.specificBookDetails.publisher;
-    self.tagsTextField.text = [NSString stringWithFormat:@"%@", [self.specificBookDetails.categories componentsJoinedByString:@","]];
+    self.tagsTextField.text = self.specificBookDetails.categories;
     self.lastCheckedOutByTextField.text = self.specificBookDetails.lastCheckedOutBy;
     
 }
@@ -55,7 +64,7 @@
 
 #pragma mark - Adjust view for keyboard input methods
 
--(void)keyboardWillShow {
+- (void)keyboardWillShow {
     
     if (self.view.frame.origin.y >= 0)
     {
@@ -68,7 +77,7 @@
     
 }
 
--(void)keyboardWillHide {
+- (void)keyboardWillHide {
     
     if (self.view.frame.origin.y >= 0)
     {
@@ -160,7 +169,7 @@
                                         self.specificBookDetails.title = self.titleTextField.text;
                                         self.specificBookDetails.author = self.authorTextField.text;
                                         self.specificBookDetails.publisher = self.publisherTextField.text;
-                                        //self.specificBookDetails.categories = self.tagsTextField.text;
+                                        self.specificBookDetails.categories = self.tagsTextField.text;
                                         self.specificBookDetails.lastCheckedOutBy = self.lastCheckedOutByTextField.text;
                                         
                                         AALBookDetailViewController *bookDetailVC = [[AALBookDetailViewController alloc]init];

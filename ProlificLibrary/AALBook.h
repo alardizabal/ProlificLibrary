@@ -11,7 +11,7 @@
 @interface AALBook : NSObject
 
 @property (nonatomic) NSString *author;
-@property (nonatomic) NSArray *categories;
+@property (nonatomic) NSString *categories;
 @property (nonatomic) id bookID;
 @property (nonatomic) NSDate *lastCheckedOutDate;
 @property (nonatomic) NSString *lastCheckedOutBy;

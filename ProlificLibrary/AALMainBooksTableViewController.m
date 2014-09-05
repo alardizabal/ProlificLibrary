@@ -20,6 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addBookButton;
 @property (nonatomic) UIRefreshControl *refreshControl;
 
+// Pull down to refresh table view method
+- (void)refreshTable;
+
+- (IBAction)clearAllButtonPressed:(id)sender;
+
 @end
 
 @implementation AALMainBooksTableViewController
@@ -28,6 +33,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
+        
     }
     return self;
 }
@@ -39,6 +45,7 @@
     self.navigationController.navigationBar.barTintColor = darkMintColor;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"books_logo"]];
+    self.navigationController.navigationBar.topItem.title = @"";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -58,7 +65,7 @@
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [self.tableView reloadData];
 }
