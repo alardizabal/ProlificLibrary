@@ -52,6 +52,10 @@
     
     self.store = [AALLibraryDataStore sharedDataStore];
     
+    self.bookTitleTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.authorTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.publisherTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    
     self.bookTitleTextField.delegate = self;
     self.authorTextField.delegate = self;
     self.publisherTextField.delegate = self;

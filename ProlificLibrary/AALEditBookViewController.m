@@ -55,6 +55,11 @@
     self.tagsTextField.text = self.specificBookDetails.categories;
     self.lastCheckedOutByTextField.text = self.specificBookDetails.lastCheckedOutBy;
     
+    self.titleTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.authorTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.publisherTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.lastCheckedOutByTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    
     self.titleTextField.delegate = self;
     self.authorTextField.delegate = self;
     self.publisherTextField.delegate = self;
