@@ -77,7 +77,7 @@
                    lastCheckedOutBy:(NSString *)fullName
                          completion:(void (^)(BOOL))completionBlock
 {
-
+    
     NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
     NSString *updateBookDetailURL = [NSString stringWithFormat:@"%@books/%@", kPROLIFIC_API_PATH, bookID];
     
@@ -156,14 +156,14 @@
 
 + (void) deleteAllBooksWithCompletion:(void (^)(BOOL))completionBlock
 {
-
+    
     NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
     NSString *deleteAllBooksURL = [NSString stringWithFormat:@"%@clean", kPROLIFIC_API_PATH];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager DELETE:deleteAllBooksURL
-      parameters:nil
-         success:^(NSURLSessionDataTask *task, id responseObject)
+         parameters:nil
+            success:^(NSURLSessionDataTask *task, id responseObject)
      {
          [backgroundQueue addOperationWithBlock:^{
              completionBlock(responseObject);

@@ -32,7 +32,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        
     }
     return self;
 }
@@ -49,7 +49,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-
+    
     if (self.specificBookDetails.title == (id)[NSNull null]) {
         self.specificBookDetails.title = @"Title N/A";
         
@@ -64,7 +64,7 @@
         
     } else if (self.specificBookDetails.lastCheckedOutBy == (id)[NSNull null]) {
         self.specificBookDetails.lastCheckedOutBy = @"N/A";
-
+        
     }
     
     self.bookTitleLabel.text = [NSString stringWithFormat:@"Title: %@", self.specificBookDetails.title];

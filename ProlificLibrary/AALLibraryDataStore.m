@@ -112,9 +112,9 @@
                             lastCheckedOutBy:lastCheckedOutBy
                                   completion:^(BOOL success) {
                                       
-        completionBlock(YES);
+                                      completionBlock(YES);
                                       
-    }];
+                                  }];
 }
 
 - (void) checkoutLibraryBookWithName:(NSString *)fullName

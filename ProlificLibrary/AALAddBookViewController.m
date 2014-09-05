@@ -41,7 +41,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        
     }
     return self;
 }
@@ -166,17 +166,37 @@
                                                                delegate:self
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
-        self.submitButtonAlertView.delegate = self;
-        self.submitButtonAlertView.tag = 1;
+        
         [self.submitButtonAlertView show];
         
     } else {
+        
+        // Avoid a strong reference cycle by using "weak" self
+        
+        __weak AALAddBookViewController *addBookVC = self;
         
         [self.store addLibraryBookWithTitle:self.bookTitleTextField.text
                                      author:self.authorTextField.text
                                  categories:self.categoriesTextField.text
                                   publisher:self.publisherTextField.text
                                  completion:^(BOOL success) {
+                                     
+                                     [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                                         
+                                         UIAlertView *bookSubmittedAlertView = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                                                                          message:@"You have just added a new book!"
+                                                                                                         delegate:nil
+                                                                                                cancelButtonTitle:@"OK"
+                                                                                                otherButtonTitles:nil];
+                                         [bookSubmittedAlertView show];
+                                         
+                                         addBookVC.bookTitleTextField.text = @"";
+                                         addBookVC.authorTextField.text = @"";
+                                         addBookVC.categoriesTextField.text = @"";
+                                         addBookVC.publisherTextField.text = @"";
+                                         
+                                     }];
+                                     
                                  }];
     }
 }

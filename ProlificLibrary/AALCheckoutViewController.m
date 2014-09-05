@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.store = [AALLibraryDataStore sharedDataStore];
     
     self.enterNameTextField.delegate = self;
@@ -91,7 +91,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
-{    
+{
     [textField resignFirstResponder];
     return YES;
 }
