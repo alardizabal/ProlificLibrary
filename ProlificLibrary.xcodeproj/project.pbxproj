@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F6F5FC5445343B69CAA29B6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D198EEE23AD14EF1BCDD0B48 /* libPods.a */; };
-		A21918DB19B99D4A006DE05E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A21918DA19B99D4A006DE05E /* README.md */; };
 		A25E39D419B6546A000B7BE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25E39D319B6546A000B7BE1 /* Foundation.framework */; };
 		A25E39D619B6546A000B7BE1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25E39D519B6546A000B7BE1 /* CoreGraphics.framework */; };
 		A25E39D819B6546A000B7BE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25E39D719B6546A000B7BE1 /* UIKit.framework */; };
@@ -31,6 +30,7 @@
 		A25E3A2319B66ABE000B7BE1 /* AALLibraryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E3A2219B66ABE000B7BE1 /* AALLibraryDataStore.m */; };
 		A29B0C0E19B8DD2700F354D9 /* AALCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B0C0D19B8DD2700F354D9 /* AALCheckoutViewController.m */; };
 		A29B0C1119B8DD5300F354D9 /* AALEditBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B0C1019B8DD5300F354D9 /* AALEditBookViewController.m */; };
+		A29D359319B9BFF800FB1E6C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A29D359219B9BFF800FB1E6C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		4539CDFC1E4A4D38ACF56D1A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		A21918DA19B99D4A006DE05E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A25E39D019B6546A000B7BE1 /* ProlificLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProlificLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E39D319B6546A000B7BE1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A25E39D519B6546A000B7BE1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -81,6 +80,7 @@
 		A29B0C0D19B8DD2700F354D9 /* AALCheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALCheckoutViewController.m; sourceTree = "<group>"; };
 		A29B0C0F19B8DD5300F354D9 /* AALEditBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALEditBookViewController.h; sourceTree = "<group>"; };
 		A29B0C1019B8DD5300F354D9 /* AALEditBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALEditBookViewController.m; sourceTree = "<group>"; };
+		A29D359219B9BFF800FB1E6C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		D198EEE23AD14EF1BCDD0B48 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,6 +144,7 @@
 		A25E39D919B6546A000B7BE1 /* ProlificLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				A29D359219B9BFF800FB1E6C /* README.md */,
 				A25E3A1B19B65F33000B7BE1 /* Classes */,
 				A25E3A1119B65CBB000B7BE1 /* View Controllers */,
 				A25E3A1C19B65F43000B7BE1 /* Object Models */,
@@ -156,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				A25E39E519B6546A000B7BE1 /* Main.storyboard */,
-				A21918DA19B99D4A006DE05E /* README.md */,
 				A25E39EB19B6546A000B7BE1 /* Images.xcassets */,
 				A25E3A1D19B66076000B7BE1 /* Other */,
 			);
@@ -313,8 +313,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A25E39EC19B6546A000B7BE1 /* Images.xcassets in Resources */,
-				A21918DB19B99D4A006DE05E /* README.md in Resources */,
 				A25E39DE19B6546A000B7BE1 /* InfoPlist.strings in Resources */,
+				A29D359319B9BFF800FB1E6C /* README.md in Resources */,
 				A25E39E719B6546A000B7BE1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

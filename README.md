@@ -1,4 +1,0 @@
-ProlificLibrary
-===============
-
-Book tracking app!
