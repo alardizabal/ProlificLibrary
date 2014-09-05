@@ -26,7 +26,6 @@
          success:^(NSURLSessionDataTask *task, id responseObject)
      {
          [backgroundQueue addOperationWithBlock:^{
-             NSLog(@"%@", responseObject);
              completionBlock(responseObject);
          }];
          
@@ -57,7 +56,6 @@
           success:^(NSURLSessionDataTask *task, id responseObject)
      {
          [backgroundQueue addOperationWithBlock:^{
-             NSLog(@"Post %@", responseObject);
              completionBlock(responseObject);
          }];
          
