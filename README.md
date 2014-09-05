@@ -36,6 +36,7 @@ A book tracking app in Objective-C by Albert Lardizabal for Prolific Interactive
 1. A search function within the table view
 2. An alphabetically indexed table view similar to the iPhone Contacts app
 3. Editing mode for the table view that would allow quick deletion of a large number of items
+4. The autolayout constraints I created allow for landscape use, but showing the current text field being edited AND the keyboard at the same time proved to be very difficult to correctly animate
 
 
 ##Addendum:

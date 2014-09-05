@@ -176,6 +176,7 @@
                                         self.specificBookDetails.author = self.authorTextField.text;
                                         self.specificBookDetails.publisher = self.publisherTextField.text;
                                         self.specificBookDetails.categories = self.tagsTextField.text;
+                                        
                                         self.specificBookDetails.lastCheckedOutBy = self.lastCheckedOutByTextField.text;
                                         
                                         AALBookDetailViewController *bookDetailVC = [[AALBookDetailViewController alloc]init];
