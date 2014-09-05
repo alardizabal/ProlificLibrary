@@ -8,13 +8,13 @@ A book tracking app in Objective-C by Albert Lardizabal for Prolific Interactive
 
 
 * AFNetworking is used for all API requests
-* NSOperationQueue used to manage background and main thread processes
+* NSOperationQueue is used to manage background and main thread processes
 
-* DataStorage class created as a singleton to store the array of books
+* Data store class created as a singleton to store the array of books
 
-* IB Autolayout used
+* IB Autolayout was used
 
-* UIAlertView delegate methods implemented to determine the correct course of action based on the user's response
+* UIAlertView delegate methods were implemented in order to determine the correct course of action based on the user's response
 
 * Books in the table view are sorted alphabetically in ascending order by title
 * Swipe to delete method implemented in table view (delegate method)
@@ -27,7 +27,7 @@ A book tracking app in Objective-C by Albert Lardizabal for Prolific Interactive
 * Notification center used to detect visibility of keyboard
 
 * For screens with text fields - Pressing the return key or tapping outside the text fields will hide the keyboard
-* Autocapitalization implemented (UITextAutocapitalizationTypeWords)
+* Autocapitalization implemented
 
 
 
@@ -44,13 +44,13 @@ A book tracking app in Objective-C by Albert Lardizabal for Prolific Interactive
 
 * **AALAPIClient** - Uses AFNetworking to make API requests
 * **AALLibraryDataStore** - Used to create the data store singleton and kick off requests to the AALAPIClient class
-* **AALConstants** - Central location for constants.  Not used much for this project.
+* **AALConstants** - Central location for constants.
 
-* **AALMainBooksTableViewController** - Table view controller class.  The VC is the main screen that lists all available books.
-* **AALBookDetailViewController** - The class that lists the full detail for a book selected from the table view
+* **AALMainBooksTableViewController** - Manages the main table view that lists all available books.\
+* **AALBookDetailViewController** - Lists the full detail for a book selected from the table view
 * **AALCheckoutViewController** - Manages the book checkout process
 * **AALEditBookViewController** - Allows editing of a book's details
-* **AALAddBookViewController** - This class manages the creation of a new entry in the library
+* **AALAddBookViewController** - Manages the creation of a new entry in the library
 
 * **AALBook** - Custom class that describes the object model of a book retrieved from the API
 
