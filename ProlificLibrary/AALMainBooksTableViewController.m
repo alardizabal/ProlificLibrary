@@ -9,6 +9,7 @@
 #import "AALMainBooksTableViewController.h"
 #import "AALBookDetailViewController.h"
 #import "AALLibraryDataStore.h"
+#import "AALConstants.h"
 #import "AALAPIClient.h"
 #import "AALBook.h"
 
@@ -27,7 +28,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -36,11 +36,9 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationController.navigationBar.barTintColor = darkMintColor;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"books_logo"]];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -68,14 +66,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
@@ -145,7 +141,6 @@
             [self.store getAllBooksWithCompletion:^(BOOL success) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     [self.tableView reloadData];
-                    //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 }];
             }];
         }];
@@ -164,30 +159,23 @@
     [clearAllAlertview show];
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     
-    if (buttonIndex == 1)
+    if (buttonIndex == 0)
     {
+        
         [self dismissViewControllerAnimated:YES completion:^{
         }];
+        
+    } else if (buttonIndex == 1)
+    {
+        [self.store deleteAllBooksWithCompletion:^(BOOL success) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.tableView reloadData];
+            }];
+        }];
     }
-    
 }
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 @end

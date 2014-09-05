@@ -138,4 +138,13 @@
     }];
 }
 
+- (void) deleteAllBooksWithCompletion:(void (^)(BOOL))completionBlock
+{
+    [AALAPIClient deleteAllBooksWithCompletion:^(BOOL success) {
+        
+        completionBlock(YES);
+        
+    }];
+}
+
 @end

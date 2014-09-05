@@ -9,6 +9,8 @@
 #import "AALAddBookViewController.h"
 #import "AALLibraryDataStore.h"
 
+#define kOFFSET_FOR_KEYBOARD 200.0
+
 @interface AALAddBookViewController ()
 
 @property (nonatomic) AALLibraryDataStore *store;
@@ -31,7 +33,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -41,13 +43,93 @@
     [super viewDidLoad];
     
     self.store = [AALLibraryDataStore sharedDataStore];
+}
+
+#pragma mark - Adjust view for keyboard input methods
+
+-(void)keyboardWillShow {
+    
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+    else if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO];
+    }
     
 }
 
-- (void)didReceiveMemoryWarning
+-(void)keyboardWillHide {
+    
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+    else if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO];
+    }
+    
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if  (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+}
+
+- (void)setViewMovedUp:(BOOL)movedUp
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.2];
+    
+    CGRect rect = self.view.frame;
+    
+    if (movedUp)
+    {
+        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
+        rect.size.height += kOFFSET_FOR_KEYBOARD;
+    }
+    else
+    {
+        rect.origin.y += kOFFSET_FOR_KEYBOARD;
+        rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
 }
 
 - (IBAction)doneButtonPressed:(id)sender
@@ -55,10 +137,10 @@
     if (self.bookTitleTextField.text || self.authorTextField.text || self.publisherTextField.text || self.categoriesTextField.text) {
         
         self.doneButtonAlertView = [[UIAlertView alloc] initWithTitle:@"Warning!"
-                                                          message:@"You have unsaved changes.\n  Click OK to discard edits."
-                                                         delegate:self
-                                                cancelButtonTitle:@"Cancel"
-                                                otherButtonTitles:@"OK", nil];
+                                                              message:@"You have unsaved changes.\n  Click OK to discard edits."
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                                    otherButtonTitles:@"OK", nil];
         self.doneButtonAlertView.delegate = self;
         self.doneButtonAlertView.tag = 0;
         [self.doneButtonAlertView show];
@@ -71,10 +153,10 @@
     if ([self.bookTitleTextField.text isEqualToString:@""] || [self.authorTextField.text isEqualToString:@""])
     {
         self.submitButtonAlertView = [[UIAlertView alloc] initWithTitle:@"Missing Required Info"
-                                                          message:@"Title and author fields \n must be populated!"
-                                                         delegate:self
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
+                                                                message:@"Title and author fields \n must be populated!"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
         self.submitButtonAlertView.delegate = self;
         self.submitButtonAlertView.tag = 1;
         [self.submitButtonAlertView show];
@@ -90,7 +172,7 @@
     }
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (alertView.tag == 0 && buttonIndex == 1)
     {
@@ -100,15 +182,12 @@
     
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (IBAction)hideKeyboard:(id)sender
+{
+    [self.bookTitleTextField resignFirstResponder];
+    [self.authorTextField resignFirstResponder];
+    [self.publisherTextField resignFirstResponder];
+    [self.categoriesTextField resignFirstResponder];
+}
 
 @end

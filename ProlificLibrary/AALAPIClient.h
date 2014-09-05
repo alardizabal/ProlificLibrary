@@ -26,7 +26,7 @@
                          categories:(NSString *)categories
                           publisher:(NSString *)publisher
                    lastCheckedOutBy:(NSString *)lastCheckedOutBy
-                         completion:(void (^)(BOOL))completionBlock;
+                         completion:(void (^)(BOOL success))completionBlock;
 
 + (void) checkoutLibraryBookWithName:(NSString *)fullName
                               bookID:(id)bookID
@@ -36,6 +36,6 @@
 + (void) deleteSingleBookWithID:(id)bookID
                      completion:(void (^)(BOOL success))completionBlock;
 
-- (void) deleteAllBooks;
++ (void) deleteAllBooksWithCompletion:(void (^)(BOOL))completionBlock;
 
 @end

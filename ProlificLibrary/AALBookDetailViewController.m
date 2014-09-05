@@ -40,6 +40,12 @@
     
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
 
@@ -78,17 +84,6 @@
     
     [self presentViewController:activityVC animated:YES completion:^{
     }];
-}
-
-- (IBAction)editButtonPressed:(id)sender
-{
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Navigation

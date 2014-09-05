@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "914-skull-and-crossbones.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "914-skull-and-crossbones@2x.png"
+      "filename" : "books_logo.png"
     }
   ],
   "info" : {

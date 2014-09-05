@@ -154,8 +154,26 @@
     
 }
 
-- (void) deleteAllBooks
++ (void) deleteAllBooksWithCompletion:(void (^)(BOOL))completionBlock
 {
+
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+    NSString *deleteAllBooksURL = [NSString stringWithFormat:@"%@clean", kPROLIFIC_API_PATH];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager DELETE:deleteAllBooksURL
+      parameters:nil
+         success:^(NSURLSessionDataTask *task, id responseObject)
+     {
+         [backgroundQueue addOperationWithBlock:^{
+             completionBlock(responseObject);
+         }];
+         
+         
+     } failure:^(NSURLSessionDataTask *task, NSError *error)
+     {
+         NSLog(@"Fail: %@",error.localizedDescription);
+     }];
     
 }
 

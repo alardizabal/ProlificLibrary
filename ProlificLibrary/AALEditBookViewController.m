@@ -10,6 +10,8 @@
 #import "AALBookDetailViewController.h"
 #import "AALLibraryDataStore.h"
 
+#define kOFFSET_FOR_KEYBOARD 220.0
+
 @interface AALEditBookViewController ()
 
 @property (nonatomic) AALLibraryDataStore *store;
@@ -51,6 +53,93 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Adjust view for keyboard input methods
+
+-(void)keyboardWillShow {
+    
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+    else if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO];
+    }
+    
+}
+
+-(void)keyboardWillHide {
+    
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+    else if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO];
+    }
+    
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)sender
+{
+    if  (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+}
+
+- (void)setViewMovedUp:(BOOL)movedUp
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.2];
+    
+    CGRect rect = self.view.frame;
+    
+    if (movedUp)
+    {
+        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
+        rect.size.height += kOFFSET_FOR_KEYBOARD;
+    }
+    else
+    {
+        rect.origin.y += kOFFSET_FOR_KEYBOARD;
+        rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
 - (IBAction)cancelButtonPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -83,15 +172,13 @@
                                 }];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (IBAction)hideKeyboard:(id)sender
+{
+    [self.titleTextField resignFirstResponder];
+    [self.authorTextField resignFirstResponder];
+    [self.publisherTextField resignFirstResponder];
+    [self.tagsTextField resignFirstResponder];
+    [self.lastCheckedOutByTextField resignFirstResponder];
+}
 
 @end

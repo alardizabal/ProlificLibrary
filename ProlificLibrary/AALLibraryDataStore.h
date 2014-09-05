@@ -38,4 +38,6 @@
 - (void) deleteSingleBookWithID:(id)bookID
                      completion:(void (^)(BOOL success))completionBlock;
 
+- (void) deleteAllBooksWithCompletion:(void (^)(BOOL success))completionBlock;
+
 @end

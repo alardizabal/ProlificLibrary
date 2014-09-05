@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define darkMintColor [UIColor colorWithRed:8.0/255.0 green:180.0/255.0 blue:112.0/255.0 alpha:1.0]
+
 @interface AALConstants : NSObject
 
 extern NSString *const kPROLIFIC_API_PATH;
