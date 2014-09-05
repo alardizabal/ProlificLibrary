@@ -30,7 +30,7 @@
 		A25E3A2319B66ABE000B7BE1 /* AALLibraryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E3A2219B66ABE000B7BE1 /* AALLibraryDataStore.m */; };
 		A29B0C0E19B8DD2700F354D9 /* AALCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B0C0D19B8DD2700F354D9 /* AALCheckoutViewController.m */; };
 		A29B0C1119B8DD5300F354D9 /* AALEditBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B0C1019B8DD5300F354D9 /* AALEditBookViewController.m */; };
-		A29D359319B9BFF800FB1E6C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A29D359219B9BFF800FB1E6C /* README.md */; };
+		A29D359519B9C12100FB1E6C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A29D359419B9C12100FB1E6C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +80,7 @@
 		A29B0C0D19B8DD2700F354D9 /* AALCheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALCheckoutViewController.m; sourceTree = "<group>"; };
 		A29B0C0F19B8DD5300F354D9 /* AALEditBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALEditBookViewController.h; sourceTree = "<group>"; };
 		A29B0C1019B8DD5300F354D9 /* AALEditBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALEditBookViewController.m; sourceTree = "<group>"; };
-		A29D359219B9BFF800FB1E6C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		A29D359419B9C12100FB1E6C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		D198EEE23AD14EF1BCDD0B48 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,7 +144,7 @@
 		A25E39D919B6546A000B7BE1 /* ProlificLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				A29D359219B9BFF800FB1E6C /* README.md */,
+				A29D359419B9C12100FB1E6C /* README.md */,
 				A25E3A1B19B65F33000B7BE1 /* Classes */,
 				A25E3A1119B65CBB000B7BE1 /* View Controllers */,
 				A25E3A1C19B65F43000B7BE1 /* Object Models */,
@@ -314,7 +314,7 @@
 			files = (
 				A25E39EC19B6546A000B7BE1 /* Images.xcassets in Resources */,
 				A25E39DE19B6546A000B7BE1 /* InfoPlist.strings in Resources */,
-				A29D359319B9BFF800FB1E6C /* README.md in Resources */,
+				A29D359519B9C12100FB1E6C /* README.md in Resources */,
 				A25E39E719B6546A000B7BE1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
