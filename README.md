@@ -46,7 +46,7 @@ A book tracking app in Objective-C by Albert Lardizabal for Prolific Interactive
 * **AALLibraryDataStore** - Used to create the data store singleton and kick off requests to the AALAPIClient class
 * **AALConstants** - Central location for constants.
 
-* **AALMainBooksTableViewController** - Manages the main table view that lists all available books.\
+* **AALMainBooksTableViewController** - Manages the main table view that lists all available books.
 * **AALBookDetailViewController** - Lists the full detail for a book selected from the table view
 * **AALCheckoutViewController** - Manages the book checkout process
 * **AALEditBookViewController** - Allows editing of a book's details
