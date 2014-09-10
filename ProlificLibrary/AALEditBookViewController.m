@@ -5,6 +5,9 @@
 //  Created by Albert Lardizabal on 9/4/14.
 //  Copyright (c) 2014 Albert Lardizabal. All rights reserved.
 //
+//  viewWillAppear will add the keyboard hide/show notifications
+//  depending on the state, the keyboardWillShow or keyboardWillHide methods will run
+//  setViewMovedUp will shift the main view's frame and add/remove whitespace for the keyboard
 
 #import "AALEditBookViewController.h"
 #import "AALBookDetailViewController.h"
@@ -84,6 +87,9 @@
 }
 
 - (void)keyboardWillHide {
+    
+    // If the keyboard is about to hide, check the frame if the y origin is less than zero.  If yes, then
+    // call setViewMovedUp and push the view down and remove the whitespace for the keyboard.
     
     if (self.view.frame.origin.y >= 0)
     {
@@ -180,7 +186,7 @@
                                         self.specificBookDetails.lastCheckedOutBy = self.lastCheckedOutByTextField.text;
                                         
                                         AALBookDetailViewController *bookDetailVC = [[AALBookDetailViewController alloc]init];
-                                        bookDetailVC.self.specificBookDetails = self.specificBookDetails;
+                                        bookDetailVC.specificBookDetails = self.specificBookDetails;
                                         
                                         [self dismissViewControllerAnimated:YES completion:nil];
                                         

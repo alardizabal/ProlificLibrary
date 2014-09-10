@@ -59,3 +59,5 @@ A book tracking app in Objective-C by Albert Lardizabal for Prolific Interactive
 Enjoy!  Let me know if you have any questions.
 
 Albert
+
+NB: AALCheckoutViewController.m and AALEditBookViewController.m updated to remove self from bookDetailVC.specificBookDetails property

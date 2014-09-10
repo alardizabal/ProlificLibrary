@@ -77,7 +77,7 @@
                 self.specificBookDetails.lastCheckedOutDate = currentDate;
                 
                 AALBookDetailViewController *bookDetailVC = [[AALBookDetailViewController alloc]init];
-                bookDetailVC.self.specificBookDetails = self.specificBookDetails;
+                bookDetailVC.specificBookDetails = self.specificBookDetails;
                 
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
